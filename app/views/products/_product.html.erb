@@ -1,5 +1,15 @@
+<!-- these seems to be the main products page with the containers -->
+
 <article class="product">
   <header>
+
+    <% if product.quantity == 0 %>
+
+      <h3 class="sold-out">Sold Out!</h3>
+
+    <% end %>
+
+
     <%= link_to product do %>
       <%= image_tag product.image.thumb, alt: product.name %>
       <h4><%= product.name %></h4>
