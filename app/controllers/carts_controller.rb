@@ -3,10 +3,11 @@ class CartsController < ApplicationController
   before_filter :authorize
 
   def show
+    @products = Product.all.order(created_at: :desc)
   end
 
   def add_item
-    product_id = params[:product_id].to_s
+    product_id = params[:product_id].to_sz
 
     item = cart[product_id] || { "quantity" => 0 }
     item["quantity"] += 1
