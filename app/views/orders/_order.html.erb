@@ -1,0 +1,24 @@
+<% @order_total = 0 %>
+
+<% order.line_items.each do |orderitem| %>
+<% product_total = (orderitem[:quantity].to_i)*(orderitem.product.price) %>
+<% @order_total += product_total %>
+
+  <tr>
+    <td>
+        <h4><%= image_tag orderitem.product.image.tiny %></h4>
+    </td>
+    <td>
+        <h4><%= orderitem.product.name %></h4>
+    </td>
+    <td>
+        <h4><%= orderitem.product.description %></h4>
+    </td>
+    <td>
+        <h4><%= orderitem[:quantity] %></h4>
+    </td>
+    <td>
+        <h4>$<%= (orderitem[:quantity].to_i)*(orderitem.product.price) %></h4>
+    </td>
+  </tr>
+<% end %>
