@@ -13,6 +13,7 @@ before_filter :authorize
     if order.valid?
       empty_cart!
       redirect_to order, notice: 'Your Order has been placed.'
+      UserMailer.order_email(current_user).deliver
     else
       redirect_to cart_path, flash: { error: order.errors.full_messages.first }
     end
@@ -38,6 +39,8 @@ before_filter :authorize
   end
 
   def create_order(stripe_charge)
+
+
     order = Order.new(
       email: params[:stripeEmail],
       total_cents: cart_total,
