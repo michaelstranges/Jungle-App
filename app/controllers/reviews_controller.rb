@@ -9,8 +9,8 @@ class ReviewsController < ApplicationController
   end
 
   def destroy
-    puts "------------------------------------------"
-    @review = Review.find(allowed_params)
+    puts "AAAAAAAAAAAAAAAAAAAAAAA"
+    @review = Review.find(params[:id])
     @review.destroy
     redirect_to :back
   end
