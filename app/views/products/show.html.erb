@@ -21,7 +21,13 @@
           <dt>Quantity</dt>
           <dd><%= @product.quantity %></dd>
           <dt>Price</dt>
-          <dd><%= @product.price %></dd>
+          <dd><%= @product.price %></dd><br/>
+
+        <% @reviews.each do |r| %>
+          <dd>User: <%= r.user_id %></dd>
+          <dd>Review: <%= r.description %></dd>
+          <dd>Rating: <%= r.rating %></dd><br/>
+        <% end %>
         </dl>
       </div>
     </div>

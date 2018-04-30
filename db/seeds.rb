@@ -29,6 +29,24 @@ cat1 = Category.find_or_create_by! name: 'Apparel'
 cat2 = Category.find_or_create_by! name: 'Electronics'
 cat3 = Category.find_or_create_by! name: 'Furniture'
 
+## USERS
+
+user1 = User.create!({
+  email: "test1@test.com",
+  password_digest: "password"
+})
+
+user2 = User.create!({
+  email: "test2@test.com",
+  password_digest: "password"
+})
+
+user3 = User.create!({
+  email: "test3@test.com",
+  password_digest: "password"
+})
+
+
 ## PRODUCTS
 
 puts "Re-creating Products ..."
@@ -132,5 +150,44 @@ cat3.products.create!({
   price: 2_483.75
 })
 
+##Creates reviews
+
+Review.destroy_all
+
+rev1 = Review.create!({
+  product_id: 1,
+  user_id: 1,
+  description: Faker::Hipster.paragraph(3),
+  rating: 4,
+  createdat: Date.today,
+  updatedat: Date.today
+})
+
+rev2 = Review.create!({
+  product_id: 1,
+  user_id: 4,
+  description: Faker::Hipster.paragraph(3),
+  rating: 1,
+  createdat: Date.today,
+  updatedat: Date.today
+})
+
+rev3 = Review.create!({
+  product_id: 2,
+  user_id: 1,
+  description: Faker::Hipster.paragraph(3),
+  rating: 3,
+  createdat: Date.today,
+  updatedat: Date.today
+})
+
+rev4 = Review.create!({
+  product_id: 2,
+  user_id: 2,
+  description: Faker::Hipster.paragraph(3),
+  rating: 2,
+  createdat: Date.today,
+  updatedat: Date.today
+})
 
 puts "DONE!"
