@@ -9,7 +9,6 @@ class ReviewsController < ApplicationController
   end
 
   def destroy
-    puts "AAAAAAAAAAAAAAAAAAAAAAA"
     @review = Review.find(params[:id])
     @review.destroy
     redirect_to :back
