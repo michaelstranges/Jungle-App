@@ -23,10 +23,25 @@
           <dt>Price</dt>
           <dd><%= @product.price %></dd><br/>
 
+        <%= form_for [@product, @review] do |r| %>
+          <%= r.label :description %>
+          <%= r.text_field :description %>
+
+          <%= r.label :rating %>
+          <%= r.text_field :rating %> <br/ >
+          <%= r.submit 'Submit' %>
+        <% end %>
+
+
+
         <% @reviews.each do |r| %>
           <dd>User: <%= r.user_id %></dd>
           <dd>Review: <%= r.description %></dd>
-          <dd>Rating: <%= r.rating %></dd><br/>
+          <dd>Rating: <%= r.rating %></dd>
+            <% if current_user.id == r.user_id %>
+                <dd> <%= link_to 'Delete', [@product, @review], method: :delete %> </dd>
+            <% end %>
+          <br />
         <% end %>
         </dl>
       </div>

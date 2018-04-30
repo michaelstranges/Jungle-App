@@ -7,6 +7,7 @@ before_filter :authorize
   end
 
   def show
+
     @product = Product.find params[:id]
     @reviews = @product.reviews.all.order(created_at: :desc)
     @review = @product.reviews.build
